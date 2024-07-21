@@ -1,0 +1,169 @@
+
+## Day 1 Setup and Installations
+
+**Important Note**: All files can be accessed directly in the (https://github.com/Muhammadxasir/Bioinformatics-training/blob/master/Day-1-Setup.md)
+
+
+When you complete the install script with success, always run:
+
+```
+cd $HOME/omics_workshop && conda activate omics_workshop
+```
+
+whenever you open a new WSL2 or Terminal instance
+
+
+### Installation of Pre-requisites
+
+There should only be 1 requirement to install for Linux users and 2 for both Mac and Windows. 
+
+### Option A: Windows Only. Mac and Linux need to do Option B. 
+
+Steps to get everything:
+
+1. Download the file. Use only **one** of the two options provided here:
+   - Install Ubuntu from the [Microsoft Store](https://apps.microsoft.com/detail/9pdxgncfsczv?rtc=1&hl=en-us&gl=US)
+   - If that fails then run: [install.bat](https://jhuapl-bio.github.io/omics_workshop/install.bat)
+      - Run (double click) `install.bat` in your `Downloads` folder
+4. Follow the prompt that opens after some time to add a username and password: Defaults are
+   Username: `omics_workshop`
+   Password: `omics_workshop`
+   However, if you intend to use the system in the future you can set it to whatever information you want. **BE SURE TO REMEMBER THEM**
+5. Download the file then open [wsl.bat](https://jhuapl-bio.github.io/omics_workshop/wsl.bat) in your downloads folder. Wait for it to complete and you are done!
+
+
+### Option B: Mac or Linux
+
+1. Open a terminal
+2. Run the commands:
+```
+wget --no-check-certificate https://github.com/jhuapl-bio/omics_workshop/raw/main/install.sh -O install.sh && bash install.sh
+```
+4. Wait for the command to complete and you are done!
+
+
+#### Error - Only run if `commmand not found` is encountered for Mac OS 
+
+If you don't have `wget` on your system try to install it with `brew` 
+
+Make sure you have `brew` by running:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Then, run:
+
+```
+brew install wget 
+```
+
+
+
+Always run when you start a new terminal
+
+```
+conda activate omics_workshop
+```
+
+
+======================================================================
+
+(**DO NOT TYPE THIS UNLESS YOU HAVE ISSUES WITH THIS STEP**)
+
+If you ever have a segmentation fault at the `kraken2` step, then run 
+
+```
+conda remove -y kraken2 && conda install -c bioconda -y kraken2
+```
+
+======================================================================
+
+
+If you need additional help, see [manual steps](https://github.com/jhuapl-bio/omics_workshop/blob/main/manual_install.MD)
+
+### Updating at any point
+
+If you feel that any install did not complete successfully, you can rerun `install.sh` in the appropriate directory or through `wsl.bat` and type in `y` to prompt a full reinstall OR `n` (default) to just update or install if not installed yet. 
+
+For mac or linux, just rerun your one-line command `wget --no-check-certificate https://github.com/jhuapl-bio/omics_workshop/raw/main/install.sh -O install.sh && bash install.sh`. 
+
+**Hint** you can specify `-f` like `bash install.sh -f` to skip the prompt for y/n on a force install. It will set it to `y` by default. 
+
+## Downloading and Installing R and R studio
+
+Adapted from [https://rstudioeducation.github.io/hopr/starting.html](https://rstudioeducation.github.io/hopr/starting.html)
+
+To get started with R, you need to acquire your own copy. This appendix will show you how to download R as well as RStudio, a software application that makes R easier to use. You’ll go from downloading R to opening your first R session.
+Both R and RStudio are free and easy to download.
+
+### How to download and install R 
+
+R is maintained by an international team of developers who make the language available through the web page of [The Comprehensive R Archive Network](https://cran.r-project.org/). The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows, Mac, or Linux. 
+
+#### Windows 
+
+To install R on Windows, click **The Comprehensive R Archive Network link above**, then click the “Download R for Windows” link. Then click the “base” link. Next, click the first link at the top of the new page. This link should say something like “Download R 4.3.3 for Windows,” or the most current version of R that is shown. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.
+
+#### Mac 
+
+To install R on a Mac, click the “**Download R for Mac**” link. Next, click on the R 4.3.3 package link (or the package link for the most current release of R). An installer will download to guide you through the installation process, which is very easy. The installer lets you customize your installation, but the defaults will be suitable for most users. I’ve never found a reason to change them. If your computer requires a password before installing new programs, you’ll need it here.
+
+**Binaries Versus Source**
+
+R can be installed from precompiled binaries or built from source on any operating system. For Windows and Mac machines, installing R from binaries is extremely easy. The binary comes preloaded in its own installer. Although you can build R from source on these platforms, the process is much more complicated and won’t provide much benefit for most users. For Linux systems, the opposite is true. Precompiled binaries can be found for some systems, but it is much more common to build R from source files when installing on Linux. The download pages on [CRAN’s website](https://cran.r-project.org/) provide information about building R from source for the Windows, Mac, and Linux platforms.
+
+#### Linux 
+
+R comes preinstalled on many Linux systems, but you’ll want the newest version of R if yours is out of date. The [CRAN website](https://cran.r-project.org/) provides files to build R from source on Debian, Redhat, SUSE, and Ubuntu systems under the link “Download R for Linux.” Click the link and then follow the directory trail to the version of Linux you wish to install on. The exact installation procedure will vary depending on the Linux system you use. CRAN guides the process by grouping each set of source files with documentation or README files that explain how to install on your system.
+
+**32-bit Versus 64-bit**
+
+R comes in both 32-bit and 64-bit versions. Which should you use? 
+If your operating system doesn’t support 64-bit programs, or your RAM is less than 4 GB, 32-bit R is for you. The Windows and Mac installers will automatically install both versions if your system supports 64-bit R.
+
+### Using R 
+
+R isn’t a program that you can open and start using, like Microsoft Word or Internet Explorer. Instead, R is a computer language, like C, C++, or UNIX. You use R by writing commands in the R language and asking your computer to interpret them. Now almost everyone uses R with an application called RStudio, and we will be installing this as well.
+R and UNIX
+
+You can still run R in a UNIX or BASH window by typing the command:
+R
+
+which opens an R interpreter. You can then do your work and close the interpreter by running q() when you are finished.
+
+### RStudio
+
+RStudio is an application like Microsoft Word—except that instead of helping you write in English, RStudio helps you write in R. I use RStudio because it makes using R much easier. Also, the RStudio interface looks the same for Windows, Mac OS, and Linux. That will help when we begin to use R.
+
+You can [download RStudio](https://posit.co/products/open-source/rstudio/) for free. Navigate to the link given, and then just click the “Download RStudio” button and follow the simple instructions that follow. Once you’ve installed RStudio, you can open it like any other program on your computer—usually by clicking an icon on your desktop.
+
+Even if you use RStudio, you’ll still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn’t come with a version of R on its own.
+
+### Installing packages in R studio
+
+Next we will install a couple of packages to get us started and going for the workshop. To install a package, open R studio and navigate to the console, there you can type 
+
+```
+install.packages()
+```
+
+where the package name you want to install, appears inside the parenthesis. There will be three packages we will need to install. The first two are tidyverse, and BiocManager. Go ahead, and type these into the console as they are shown below: 
+
+```
+install.packages("tidyverse")
+install.packages("BiocManager")
+```
+You might be asked "Do you want to install from sources the packages which need compilation?" and while either option is ok, let's say **no** for our purposes. 
+
+You may also be asked if you want to "Update all/some/none?" of the package dependencies. Generally, it's preferred to say yes, however for install and the workshop, we will be saying **no** and it will be ok.
+
+It's ok if they take a couple of minutes to install as there are several packages wrapped into these bundles so we can have all the functionality we need. Once you have both packages installed, we will install the third package a different way. Type:
+
+```
+library("BiocManager")
+BiocManager::install("mia")
+```
+This package is different because it is hosted at a different location. We will be using data from this package in the workshop. 
+
+[Next-Page, Day 3](wiki/Day-3-‐-Alignment-and-Consensus-Assembly)
